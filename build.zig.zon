@@ -6,8 +6,8 @@
 
     .dependencies = .{
         .@"vulkan-zig" = .{
-            .url = "git+https://github.com/Snektron/vulkan-zig#zig-0.15-compat",
-            .hash = "vulkan-0.0.0-r7YtxztIAwBc30xIMx4tzfUcEmc7goWiFJkR13yeLfi8",
+            .url = "git+https://github.com/snektron/vulkan-zig.git#b496a6a561ffbbeb530b0f9ed4e059f88c0723a5",
+            .hash = "vulkan-0.0.0-r7Ytx7N9AwD7IZt5_XNHtkJ4G9qY0pCH-cpcOsbL8wzD",
         },
     },
 

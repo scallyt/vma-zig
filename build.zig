@@ -119,9 +119,9 @@ pub fn build(b: *std.Build) void {
 /// Try to find the Vulkan registry (vk.xml) in standard locations
 fn findVulkanRegistry(b: *std.Build) std.Build.LazyPath {
     // Try VULKAN_SDK environment variable first
-    if (b.graph.env_map.get("VULKAN_SDK")) |sdk_path| {
+    if (b.graph.environ_map.get("VULKAN_SDK")) |sdk_path| {
         const registry_path = std.fs.path.join(b.allocator, &.{ sdk_path, "share", "vulkan", "registry", "vk.xml" }) catch @panic("OOM");
-        if (std.fs.cwd().access(registry_path, .{})) |_| {
+        if (std.Io.Dir.cwd().access(b.graph.io, registry_path, .{})) |_| {
             return .{ .cwd_relative = registry_path };
         } else |_| {}
     }
@@ -133,7 +133,7 @@ fn findVulkanRegistry(b: *std.Build) std.Build.LazyPath {
     };
 
     for (common_paths) |path| {
-        if (std.fs.cwd().access(path, .{})) |_| {
+        if (std.Io.Dir.cwd().access(b.graph.io, path, .{})) |_| {
             return .{ .cwd_relative = path };
         } else |_| {}
     }
