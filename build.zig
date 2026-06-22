@@ -89,9 +89,6 @@ pub fn build(b: *std.Build) void {
         .root_source_file = b.path("src/vma.zig"),
         .target = target,
         .optimize = optimize,
-        .imports = &.{
-            .{ .name = "vulkan", .module = vkzig_dep.module("vulkan-zig") },
-        },
     });
 
     // Link the VMA library to the module
